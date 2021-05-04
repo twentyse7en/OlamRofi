@@ -1,0 +1,5 @@
+#!/bin/bash
+db="$HOME/project/OlamRofi/olam-enml.csv"
+keyword=$(awk -F'\t' '{print $2}' $db | uniq | rofi -dmenu -i)
+# awk -F'\t' '{ print $2"\t"$4 }' $db | grep "^$keyword" -w | awk -F'\t' '{print $NF}' | rofi -dmenu > /dev/null
+grep -w "$keyword" $db | awk -F'\t' '{print $NF}' | rofi -dmenu > /dev/null
